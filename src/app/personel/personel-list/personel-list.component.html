@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table table-bordered table-light table-hover">
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>City</th>
+        </tr>
+        <tr *ngFor="let item of personelList" (mousedown)="getPer(item)">
+          <td>{{item.personelId}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.surName}}</td>
+          <td>{{item.city}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-6">
+<app-personel-detail [secPersonelInput]='secPersonel'></app-personel-detail>
+    </div>
+  </div>
+</div>

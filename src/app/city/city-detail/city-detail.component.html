@@ -1,0 +1,56 @@
+<h3 style="text-align:center">Detay</h3>
+<form [formGroup]="cityForm">
+  <div class="form-group">
+    <label style="color:black"> Id:</label>
+    <input
+    class="form-control"
+      type="text"
+      formControlName="id"
+      disabled="true"
+      value="{{secCityInput.cityId}}"
+      [(ngModel)]="secCityInput.cityId"
+    />
+  </div>
+  <br />
+  <div class="form-group">
+    <label>Name:</label>
+    <input
+      [ngClass]="{
+        'is-invalid':
+          cityForm.get('sehirAd').errors && cityForm.get('sehirAd').touched
+      }"
+      type="text"
+      class="form-control"
+      formControlName="sehirAd"
+      value="{{secCityInput.name}}"
+      [(ngModel)]="secCityInput.name"
+    />
+    <div
+      class="invalid-feedback"
+      *ngIf="
+        cityForm.get('sehirAd').hasError('required') &&
+        cityForm.get('sehirAd').touched
+      "
+    >
+      Invalid City Name Max 20 min 3 char
+    </div>
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic example">
+   <button  [disabled]="cityForm.invalid" type="submit"  class="btn btn-warning" (mousedown)='createCity(secCityInput)' onclick="history.go(0)">Create</button>
+   <button [disabled]="cityForm.invalid" type="submit" class="btn btn-success"(click)='updateCity(secCityInput)'>Update</button>
+    <button [disabled]="cityForm.invalid" type="submit" class="btn btn-danger" (click)='deleteCity(secCityInput.cityId)'>Delete</button>
+  </div>
+</form>
+
+<!-- <table class="table table-bordered  table-light">
+<tr>
+  <th>CityId</th>
+  <th>Name</th>
+  <th>Image</th>
+</tr>
+<tr>
+  <td>{{secCityInput.cityId}}</td>
+  <td>{{secCityInput.name}}</td>
+  <td><img src="{{secCityInput.cityImage}}" height="120px"></td>
+</tr>
+</table> -->

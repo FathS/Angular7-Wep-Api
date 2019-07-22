@@ -1,0 +1,76 @@
+<h3 style="text-align:center">Detay</h3>
+<form [formGroup]="personelForm">
+  <div class="form-group">
+    <label style="color:black"> Id:</label>
+    <input
+    class="form-control"
+      type="text"
+      formControlName="id"
+      disabled="true"
+      value="{{secPersonelInput.personelId}}"
+      [(ngModel)]="secPersonelInput.personelId"
+    />
+  </div>
+  <br />
+  <div class="form-group">
+    <label>Name:</label>
+    <input
+      [ngClass]="{
+        'is-invalid':
+          personelForm.get('personelName').errors && personelForm.get('personelName').touched
+      }"
+      type="text"
+      class="form-control"
+      formControlName="personelName"
+      value="{{secPersonelInput.name}}"
+      [(ngModel)]="secPersonelInput.name"
+    />
+    <br>
+    <div class="form-group">
+      <label style="color:black"> Surname:</label>
+      <input
+      [ngClass]="{
+        'is-invalid':
+          personelForm.get('personelSurname').errors && personelForm.get('personelSurname').touched
+      }"
+      class="form-control"
+        type="text"
+        formControlName="personelSurname"
+        value="{{secPersonelInput.surName}}"
+        [(ngModel)]="secPersonelInput.surName"
+      />
+    </div>
+    
+    <div class="form-group">
+      <label>Cities</label>
+      <form>
+      <select class="custom-select">
+
+        <option></option>
+        <option *ngFor="let item of clist">{{item.name}}</option>
+      </select></form>
+    </div>
+    <div
+      class="invalid-feedback"
+      *ngIf="
+        personelForm.get('personeName').hasError('required') &&
+        personelForm.get('personeName').touched
+      "
+    >
+      Boş Bırakılamaz
+      
+    </div>
+  </div>
+
+<!-- <div class="form-group">
+<label style="color:gray">Id:</label><input class="form-control" type="text" disabled="true" value="{{secPersonelInput.personelId}}">
+</div>
+<div class="form-group">
+  <label style="color: gray">Name:</label><input class="form-control" type="text"  value="{{secPersonelInput.name}}">
+  </div>
+  <div class="form-group">
+    <label style="color: gray">Surname:</label><input class="form-control" type="text"  value="{{secPersonelInput.surName}}">
+    </div>
+    <div class="form-group">
+      <label style="color: gray">City:</label><input class="form-control" type="text"  value="{{secPersonelInput.city}}">
+      </div> -->
